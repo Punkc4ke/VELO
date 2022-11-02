@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Товары</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+</head>
+<body>
+<a th:href="'/login'">Выйти</a>
+<div>
+<ul class="navbar-nav mr-auto">
+    <li class="nav-item active" th:if="${isAdmin}">
+        <a class="nav-link" href="/admin/users">Пользователи <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item" th:if="${isAdmin}">
+        <a class="nav-link" href="/admin/addtovar">Добавить товар</a>
+    </li>
+    <li class="nav-item" th:if="${isAdmin}">
+        <a class="nav-link" href="/admin/category">Категории</a>
+    </li>
+    <li class="nav-item" th:if="${isAdmin}">
+        <a class="nav-link" href="/admin/color">Цвета</a>
+    </li>
+    <li class="nav-item" th:if="${isAdmin}">
+        <a class="nav-link" href="/admin/sklad">Склады</a>
+    </li>
+    <li class="nav-item" th:if="${isAdmin}">
+        <a class="nav-link" href="/admin/supplier">Поставщики</a>
+    </li>
+    <li class="nav-item" th:if="${isAdmin}">
+        <a class="nav-link" href="/admin/punkt">Пункты выдачи</a>
+    </li>
+</ul>
+</div>
+<li class="nav-item" >
+    <a class="nav-link" href="/korzina">Корзина</a>
+</li>
+<p><h4 class="display-8 p-3">Список товаров:</h4></p>
+
+<content class="d-flex p-2 ml-2 flex-column">
+    <div th:each="el : ${tovars}">
+        <h3 th:text="${el.name_tovar}"></h3>
+        <p th:text="${el.cena} + руб."></p>
+        <br>
+        <a th:href="'/tovar/details/' + ${el.id}">Подробнее</a>
+        <form th:action="'/tovar/korzina/' + ${el.id} + '/add'" method="post">
+            <button type="submit" class="btn btn-del">В корзину</button>
+        </form>
+        <li class="nav-item" th:if="${isAdmin}">
+        <form th:action="'/admin/tovar/' + ${el.id} + '/remove'" method="post">
+            <button type="submit" class="btn btn-del">Удалить</button>
+        </form>
+        </li>
+    </div>
+</content>
+<script th:src="@{/css/bootstrap.js}"></script>
+</body>
+</html>

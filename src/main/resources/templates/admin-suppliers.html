@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Поставщики</title>
+  <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+</head>
+<body>
+<a th:href="'/main'">Назад</a>
+<div>
+  <ul class="navbar-nav mr-auto">
+    <a class="nav-link" href="/admin/addsupplier">Добавить поставщика</a>
+  </ul>
+</div>
+<p><h4 class="display-8 p-3">Список поставщиков:</h4></p>
+<content class="d-flex p-2 ml-2 flex-column">
+  <div th:each="el : ${suppliers}">
+    <h3 th:text="${el.name_org}"></h3>
+    <p th:text="${el.phone}" ></p>
+    <br>
+    <a th:href="'/admin/supplier/edit/' + ${el.id}">Редактировать</a>
+    <form th:action="'/admin/supplier/' + ${el.id} + '/remove'" method="post">
+      <button type="submit" class="btn btn-del">Удалить</button>
+    </form>
+  </div>
+</content>
+<script th:src="@{/css/bootstrap.js}"></script>
+</body>
+</html>

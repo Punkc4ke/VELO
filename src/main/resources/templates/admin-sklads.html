@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Склады</title>
+  <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+</head>
+<body>
+<a th:href="'/main'">Назад</a>
+<div>
+  <ul class="navbar-nav mr-auto">
+    <a class="nav-link" href="/admin/addsklad">Добавить склад</a>
+  </ul>
+</div>
+<p><h4 class="display-8 p-3">Список складов:</h4></p>
+
+<content class="d-flex p-2 ml-2 flex-column">
+  <div th:each="el : ${sklads}">
+    <h3 th:text="${el.adres}"></h3>
+    <br>
+    <a th:href="'/admin/sklad/edit/' + ${el.id}">Редактировать</a>
+    <form th:action="'/admin/sklad/' + ${el.id} + '/remove'" method="post">
+      <button type="submit" class="btn btn-del">Удалить</button>
+    </form>
+  </div>
+</content>
+<script th:src="@{/css/bootstrap.js}"></script>
+</body>
+</html>

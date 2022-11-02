@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Корзина</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+</head>
+<body>
+<a th:href="'/main'">Назад</a>
+<div th:each="el : ${tovars1}">
+    <form th:action="'/tovar/korzina/' + ${el.id} + '/pokupka'" method="post">
+        <button type="submit" class="btn btn-del">Купить</button>
+    </form>
+</div>
+<p><h4 class="display-8 p-3">Корзина:</h4></p>
+<content class="d-flex p-2 ml-2 flex-column">
+
+    <div th:each="el : ${tovars1}">
+        <h3 th:text="${el.name_tovar}"></h3>
+        <p th:text="${el.cena} + руб."></p>
+        <br>
+        <form th:action="'/tovar/korzina/' + ${el.id} + '/remove'" method="post">
+            <button type="submit" class="btn btn-del">Убрать из корзины</button>
+        </form>
+    </div>
+</content>
+<script th:src="@{/css/bootstrap.js}"></script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Подробнее про пользователя</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+</head>
+<body>
+<content class="container d-flex flex-column align-items-center mt-4">
+    <div th:each="el:${user}">
+        <h3>Подробнее про пользователя^</h3>
+        <h3  th:text="${el.username}"></h3>
+        <h5>ФИО:</h5>
+        <div class="col-sm-10">
+            <div>
+                <h5>Фамилия:</h5>
+                <p th:text="${el.familia}"></p>
+            </div>
+        </div>
+
+        <div class="col-sm-10">
+            <div>
+                <h5>Имя:</h5>
+                <p th:text="${el.name}"></p>
+            </div>
+        </div>
+
+        <div class="col-sm-10">
+            <div>
+                <h5>Отчество:</h5>
+                <p th:text="${el.otchestvo}"></p>
+            </div>
+        </div>
+        <h5>Контакты:</h5>
+        <div class="col-sm-10">
+            <h5>Телефон:</h5>
+            <div th:each="el:${contacts1}">
+                <p th:text="${el.phone}"></p>
+            </div>
+        </div>
+
+        <div class="col-sm-10">
+            <h5>Email:</h5>
+            <div th:each="el:${contacts1}">
+                <p th:text="${el.email}"></p>
+            </div>
+        </div>
+
+        <a th:href="'/admin/users'">Назад</a>
+
+    </div>
+</content>
+<script th:src="@{/css/bootstrap.js}"></script>
+</body>
+</html>

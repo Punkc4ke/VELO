@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактирование склада</title>
+  <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+</head>
+<body>
+<content class="container d-flex flex-column align-items-center mt-4">
+  <h2>Редактирование склада</h2>
+  <div th:each="el:${sklad}">
+    <form method="post">
+      <p><input type="text" th:value="${el.adres}" name="adres" placeholder="Введите адрес склада"></p>
+      <br>
+      <p><button type="submit">Сохранить изменения</button></p>
+    </form>
+  </div>
+</content>
+<script th:src="@{/css/bootstrap.js}"></script>
+</body>
+</html>

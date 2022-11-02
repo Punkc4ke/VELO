@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавление склада<</title>
+  <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+</head>
+<body>
+<content class="container d-flex flex-column align-items-center mt-4">
+  <h1>Добавление склада</h1>
+  <form th:action="${'/admin/addsklad'}" method="post" th:object="${sklad}">
+    <div class="form-group row mt-3">
+      <label class="col-sm-2 col-form-label">Адрес склада </label>
+      <div class="col-sm-10">
+        <input name="adres" type="text" th:field="*{adres}" class="form-control">
+      </div>
+      <span class="error text-danger" th:if="${#fields.hasErrors('adres')}" th:errors="*{adres}"></span>
+    </div>
+    <button type="submit">Добавить склад</button>
+
+  </form>
+</content>
+</body>
+</html>

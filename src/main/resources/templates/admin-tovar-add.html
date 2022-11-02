@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавление товара</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+</head>
+<body>
+<content class="container d-flex flex-column align-items-center mt-4">
+    <h1>Добавление товара</h1>
+    <form th:action="${'/admin/addtovar'}" method="post" th:object="${tovar}">
+        <div class="form-group row mt-3">
+            <label class="col-sm-2 col-form-label">Название товара</label>
+            <div class="col-sm-10">
+                <input name="name_tovar" type="text" th:field="*{name_tovar}" class="form-control">
+            </div>
+            <span class="error text-danger" th:if="${#fields.hasErrors('name_tovar')}" th:errors="*{name_tovar}"></span>
+        </div>
+
+        <div class="form-group row mt-3">
+            <label class="col-sm-2 col-form-label">Цена</label>
+            <div class="col-sm-10">
+                <input name="cena" type="number"  th:field="*{cena}" class="form-control">
+            </div>
+            <span class="error text-danger" th:if="${#fields.hasErrors('cena')}" th:errors="*{cena}"></span>
+        </div>
+
+        <label class="col-sm-2 col-form-label">Категория товара</label>
+        <div>
+            <select th:field="*{category}" name="category_name">
+
+            <div th:each="element : ${categories}">
+                <option th:text="${element.category_name}" th:value="${element.id}"></option>
+            </div>
+        </select>
+        </div>
+        <label class="col-sm-2 col-form-label">Цвет товара</label>
+        <div>
+            <select th:field="*{color}"  name="color_name">
+                <div th:each="element : ${colors}">
+                    <option th:text="${element.color_name}" th:value="${element.id}"></option>
+                </div>
+            </select>
+        </div>
+
+        <label class="col-sm-2 col-form-label">Склад</label>
+        <div>
+            <select th:field="*{sklad}"  name="adres">
+                <div th:each="element : ${sklads}">
+                    <option th:text="${element.adres}" th:value="${element.id}"></option>
+                </div>
+            </select>
+        </div>
+
+        <label class="col-sm-2 col-form-label">Дата поступления</label>
+        <div class="form-group row mt-3">
+            <div class="col-sm-10">
+                <input type="date"  th:field="*{data_p}" class="form-control">
+            </div>
+        </div>
+
+        <div>
+            <select th:field="*{supplier}"  name="name_org">
+                <div th:each="element : ${suppliers}">
+                    <option th:text="${element.name_org}"  th:value="${element.id}"></option>
+                </div>
+            </select>
+        </div>
+
+        <label class="col-sm-2 col-form-label">Количество на складе</label>
+        <div class="form-group row mt-3">
+            <div class="col-sm-10">
+                <input name="count" type="number"  th:field="*{count}" class="form-control">
+            </div>
+            <span class="error text-danger" th:if="${#fields.hasErrors('count')}" th:errors="*{count}"></span>
+        </div>
+        <br>
+        <button type="submit">Добавить товар</button>
+
+    </form>
+</content>
+<script th:src="@{/css/bootstrap.js}"></script>
+</body>
+</html>

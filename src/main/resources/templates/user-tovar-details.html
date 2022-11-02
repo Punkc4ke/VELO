@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Подробнее про товар</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+</head>
+<body>
+<content class="container d-flex flex-column align-items-center mt-4">
+    <div th:each="el:${tovar}">
+        <h3>Подробнее про товар</h3>
+        <h3  th:text="${el.name_tovar}"></h3>
+
+        <div class="col-sm-10">
+            <div>
+                <h5>Цена:</h5>
+                <p th:text="${el.cena}"></p>
+            </div>
+        </div>
+
+        <div class="col-sm-10">
+            <h5>Категория:</h5>
+            <div th:each="el:${category}">
+                <p th:text="${el.category_name}"></p>
+            </div>
+        </div>
+
+        <div class="col-sm-10">
+            <h5>Цвет:</h5>
+            <div th:each="el:${color1}">
+                <p th:text="${el.color_name}"></p>
+            </div>
+        </div>
+
+        <div class="col-sm-10">
+            <h5>Дата поступления:</h5>
+            <p th:text="${el.data_p}"></p>
+        </div>
+
+        <div class="col-sm-10">
+            <h5>Склад:</h5>
+            <div th:each="el:${sklad}">
+                <p th:text="${el.adres}"></p>
+            </div>
+        </div>
+
+        <div class="col-sm-10">
+            <h5>Сейчас на складе:</h5>
+            <p th:text="${el.count} + шт."></p>
+        </div>
+
+        <div class="col-sm-10">
+            <h5>Производитель:</h5>
+            <div th:each="el:${supplier}">
+                <p th:text="${el.name_org}"></p>
+            </div>
+        </div>
+        <a th:href="'/main'">Назад</a>
+        <a th:href="'/addcomment/' + ${el.id}">Добавить коментарий</a>
+    </div>
+</content>
+
+<content class="container d-flex flex-column align-items-center mt-4">
+    <h3>Коментарии:</h3>
+    <div th:each="el : ${comments}" class="col-10 d-flex align-items-start flex-column">
+        <div class="container">
+            <div class="row justify-content-between mb-2">
+
+                <div class="col-10 d-flex align-items-start flex-column">
+                    <span class="font-weight-light" >Оценка:</span>
+                    <h3 th:text="${el.rating}"></h3>
+                    <span class="font-weight-light" >Комментарий:</span>
+                    <p th:text="${el.full_text}"></p>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+</content>
+<script th:src="@{/css/bootstrap.js}"></script>
+</body>
+</html>

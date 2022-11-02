@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавление категории</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+</head>
+<body>
+<content class="container d-flex flex-column align-items-center mt-4">
+    <h1>Добавление категории</h1>
+    <form th:action="${'/admin/addcategory'}" method="post" th:object="${category}">
+        <div class="form-group row mt-3">
+            <label class="col-sm-2 col-form-label">Название категории</label>
+            <div class="col-sm-10">
+                <input name="category_name" type="text" th:field="*{category_name}" class="form-control">
+            </div>
+            <span class="error text-danger" th:if="${#fields.hasErrors('category_name')}" th:errors="*{category_name}"></span>
+        </div>
+        <button type="submit">Добавить категорию</button>
+
+    </form>
+</content>
+<script th:src="@{/css/bootstrap.js}"></script>
+</body>
+</html>

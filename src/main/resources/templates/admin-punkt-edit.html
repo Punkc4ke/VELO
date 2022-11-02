@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактирование пункта выдачи</title>
+  <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+</head>
+<body>
+<body>
+<content class="container d-flex flex-column align-items-center mt-4">
+  <h2>Редактирование пункта выдачи</h2>
+  <div th:each="el:${punkt}">
+    <form method="post">
+      <p><input type="text" th:value="${el.adres}" name="adres" placeholder="Введите адрес пункта выдачи"></p>
+      <p><input type="text" th:value="${el.work_time}" name="work_time" placeholder="Введите времмя работы пункта выдачи"></p>
+      <p><input type="text" th:value="${el.name}" name="name" placeholder="Введите название организации"></p>
+      <br>
+      <p><button type="submit">Сохранить изменения</button></p>
+    </form>
+  </div>
+</content>
+<script th:src="@{/css/bootstrap.js}"></script>
+</body>
+</html>

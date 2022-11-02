@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Панель админа</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+</head>
+<body>
+<a th:href="'/main'">Назад</a>
+<p><h4 class="display-8 p-3">Список пользователей:</h4></p>
+
+<content class="d-flex p-2 ml-2 flex-column">
+    <div th:each="el : ${users}">
+        <h3 th:text="${el.username}"></h3>
+
+        <br>
+        <a th:href="'/admin/users/details/' + ${el.id}">Подробнее</a>
+        <a th:href="'/admin/users/edit/' + ${el.id}">Редактировать</a>
+        <form th:action="'/admin/users/details/' + ${el.id} + '/remove'" method="post">
+            <button type="submit" class="btn btn-del">Удалить</button>
+        </form>
+    </div>
+</content>
+<script th:src="@{/css/bootstrap.js}"></script>
+</body>
+</html>

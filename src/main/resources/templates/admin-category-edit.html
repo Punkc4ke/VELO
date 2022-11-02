@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактирование категории</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+</head>
+<body>
+<content class="container d-flex flex-column align-items-center mt-4">
+<h2>Редактирование категории</h2>
+<div th:each="el:${category}">
+    <form method="post">
+        <p><input type="text" th:value="${el.category_name}" name="category_name" placeholder="Введите название"></p>
+        <br>
+        <p><button type="submit">Сохранить изменения</button></p>
+    </form>
+</div>
+</content>
+<script th:src="@{/css/bootstrap.js}"></script>
+</body>
+</html>

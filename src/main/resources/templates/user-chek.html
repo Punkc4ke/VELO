@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Чек</title>
+</head>
+<body>
+<content class="d-flex p-2 ml-2 flex-column">
+    <div th:each="el : ${tovars1}">
+        <h3 th:text="${el.name_tovar}"></h3>
+        <p th:text="${el.cena} + руб."></p>
+        <br>
+        <form th:action="'/main" method="get">
+            <button type="submit" class="btn btn-del">ОК</button>
+        </form>
+    </div>
+</content>
+</body>
+</html>

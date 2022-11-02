@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Цвета</title>
+  <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+</head>
+<body>
+<a th:href="'/main'">Назад</a>
+<div>
+  <ul class="navbar-nav mr-auto">
+    <a class="nav-link" href="/admin/addcolor">Добавить цвет</a>
+  </ul>
+</div>
+<p><h4 class="display-8 p-3">Список цветов:</h4></p>
+
+<content class="d-flex p-2 ml-2 flex-column">
+  <div th:each="el : ${colors}">
+    <h3 th:text="${el.color_name}"></h3>
+    <br>
+    <a th:href="'/admin/color/edit/' + ${el.id}">Редактировать</a>
+    <form th:action="'/admin/color/' + ${el.id} + '/remove'" method="post">
+      <button type="submit" class="btn btn-del">Удалить</button>
+    </form>
+  </div>
+</content>
+<script th:src="@{/css/bootstrap.js}"></script>
+</body>
+</html>

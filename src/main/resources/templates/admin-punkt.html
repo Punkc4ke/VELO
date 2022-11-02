@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Пункты выдачи</title>
+  <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+</head>
+<body>
+<a th:href="'/main'">Назад</a>
+<div>
+  <ul class="navbar-nav mr-auto">
+    <a class="nav-link" href="/admin/addpunkt">Добавить пункт выдачи</a>
+  </ul>
+</div>
+<p><h4 class="display-8 p-3">Список пунктов выдачи:</h4></p>
+<content class="d-flex p-2 ml-2 flex-column">
+  <div th:each="el : ${punkts}">
+    <h3 th:text="${el.name}"></h3>
+    <br>
+    <a th:href="'/admin/punkt/edit/' + ${el.id}">Редактировать</a>
+    <form th:action="'/admin/punkt/' + ${el.id} + '/remove'" method="post">
+      <button type="submit" class="btn btn-del">Удалить</button>
+    </form>
+  </div>
+</content>
+<script th:src="@{/css/bootstrap.js}"></script>
+</body>
+</html>
